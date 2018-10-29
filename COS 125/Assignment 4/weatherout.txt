@@ -1,0 +1,39 @@
+Weather Watch by William Faunce
+
+Town         Date         Temp         Direction    Wind Speed   Wind Chill   Reporter    
+BANGOR       02/10/17     24.70        W            3.50         20.31        PS          
+ORONO        02/10/17     23.65        NW           3.70         18.83        SS          
+BANGOR       02/11/17     22.00        W            3.30         17.52        TM          
+CALAIS       02/11/17     25.10        W            3.90         20.23        PT          
+CALAIS       02/11/17     25.75        W            3.10         22.09        XX          
+BANGOR       02/12/17     21.90        N            3.80         16.68        HT          
+BANGOR       02/13/17     28.50        N            3.10         25.21        TS          
+ORONO        02/13/17     26.85        N            3.20         23.19        OP          
+ORONO        02/13/17     26.90        NE           3.10         23.40        IS          
+CALAIS       02/13/17     23.15        N            3.70         18.25        XX          
+ORONO        02/14/17     28.60        E            3.10         25.32        IS          
+BANGOR       02/14/17     21.75        E            3.60         16.79        JB          
+
+Average Temperature: 24.90
+Maximum Temperature: 28.60
+Minimum Temperature: 21.75
+
+Number of readings:
+BANGOR     5    
+ORONO      4    
+CALAIS     3    
+
+January    24.92     
+February   28.70     
+March      45.91     
+April      52.00     
+May        68.90     
+June       73.55     
+July       78.63     
+August     77.59     
+September  68.40     
+October    55.70     
+November   45.75     
+December   36.33     
+
+Difference between this February from historical average is -3.80
