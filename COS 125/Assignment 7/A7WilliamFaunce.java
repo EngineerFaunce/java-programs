@@ -8,24 +8,24 @@ import java.text.DecimalFormat;
 public class A7WilliamFaunce {
 
 	public static void main(String[] args) throws IOException {
-		Scanner scan = new Scanner(System.in);									// scanner for user input
-		Scanner fileScan = new Scanner(new FileReader("inventory.txt"));		// scanner for reading inventory file
-		DecimalFormat fmt = new DecimalFormat("#.00");							// format for showing only one decimal point
+		Scanner scan = new Scanner(System.in);					// scanner for user input
+		Scanner fileScan = new Scanner(new FileReader("inventory.txt"));	// scanner for reading inventory file
+		DecimalFormat fmt = new DecimalFormat("#.00");				// format for showing only one decimal point
 		
-		String input = "";														// initializes input to take in user input later
-		String item = "";														// string for entering new products
-		int itemStock = 0;														// new product's stock
-		int itemAdd = 0;													// amount of item to add/subtract from stock
-		String itemPrice = "";													// new product's unit price
-		double sum;																// cost of all items in array
+		String input = "";					// initializes input to take in user input later
+		String item = "";					// string for entering new products
+		int itemStock = 0;					// new product's stock
+		int itemAdd = 0;					// amount of item to add/subtract from stock
+		String itemPrice = "";					// new product's unit price
+		double sum;						// cost of all items in array
 		
-		final int INITIALIZE = 5;												// initial array size
-		String [] id = new String[INITIALIZE];									// array for item ID in the inventory
-		String [] price = new String[INITIALIZE];								// price of the item
-		int [] stock = new int[INITIALIZE];										// array for how much of the item is in stock
+		final int INITIALIZE = 5;				// initial array size
+		String [] id = new String[INITIALIZE];			// array for item ID in the inventory
+		String [] price = new String[INITIALIZE];		// price of the item
+		int [] stock = new int[INITIALIZE];			// array for how much of the item is in stock
 
-		int c = 0;																// initialized counter for use with while loop
-		int capacity = 0;														// capacity of array
+		int c = 0;						// initialized counter for use with while loop
+		int capacity = 0;					// capacity of array
 		
 		// OUTPUT
 		System.out.println("Inventory Manager");
@@ -45,7 +45,7 @@ public class A7WilliamFaunce {
 			stock[c] = fileScan.nextInt();
 			price[c] = fileScan.next();
 			
-			capacity++;															// increments capacity each time a value is assigned to an index
+			capacity++;
 			
 			// if loop that resizes the array if it is full
 			if (capacity == id.length || capacity == stock.length || capacity == price.length) {
@@ -61,7 +61,7 @@ public class A7WilliamFaunce {
 				}
 			}
 			
-			c++;																// increments counter to go to next available index
+			c++;
 		}
 		
 		// while loop that repeats unless the user enters "Q" which quits the program
@@ -77,7 +77,7 @@ public class A7WilliamFaunce {
 					if (check(id, id.length, item) == true) {
 						System.out.print("Enter amount to add (+) or subtract (-): ");
 						itemAdd = scan.nextInt();
-						stock[search(id, id.length, item)] = stock[search(id, id.length, item)] + itemAdd;				// adds new amount to current stock
+						stock[search(id, id.length, item)] = stock[search(id, id.length, item)] + itemAdd;		// adds new amount to current stock
 						
 						System.out.println("Item " +item+ " has new amount in stock " +stock[search(id, id.length, item)]);
 						System.out.println("");
@@ -132,7 +132,7 @@ public class A7WilliamFaunce {
 					
 				// displays inventory table	
 				case "D":
-					sum = 0;							// initializes sum to 0
+					sum = 0;
 					
 					System.out.println(String.format("%-10s %-10s %-10s", "ID", "Stock", "Unit Price"));
 					
@@ -159,73 +159,73 @@ public class A7WilliamFaunce {
 	
 	// PRE: resize is passed an array and the desired size of the new array | POST: returns new array that has been resized
 	public static String [] resize (String [] array, int newSize) {
-		String [] temp = new String [newSize];					// creates an array with capacity of desired new size
-		int nCopy = array.length;								// copies the number of values in array
-		if (newSize < array.length)								// copies only the number of values of newSize if it is less than array.length
+		String [] temp = new String [newSize];				// creates an array with capacity of desired new size
+		int nCopy = array.length;					// copies the number of values in array
+		if (newSize < array.length)					// copies only the number of values of newSize if it is less than array.length
 			nCopy = newSize;
-		for (int k = 0; k < nCopy; k++)							// assigns elements from old array to new array
+		for (int k = 0; k < nCopy; k++)					// copies elements from old array to new array
 			temp[k] = array[k];
 		return temp;											
 	}
 	
 	// PRE: resize is passed an array and the desired size of the new array | POST: returns new array that has been resized
 	public static int [] resize (int [] array, int newSize) {
-		int [] temp = new int [newSize];					// creates an array with capacity of desired new size
-		int nCopy = array.length;								// copies the number of values in array
-		if (newSize < array.length)								// copies only the number of values of newSize if it is less than array.length
+		int [] temp = new int [newSize];				// creates an array with capacity of desired new size
+		int nCopy = array.length;					// copies the number of values in array
+		if (newSize < array.length)					// copies only the number of values of newSize if it is less than array.length
 			nCopy = newSize;
-		for (int k = 0; k < nCopy; k++)							// assigns elements from old array to new array
+		for (int k = 0; k < nCopy; k++)					// copies elements from old array to new array
 			temp[k] = array[k];
 		return temp;											
 	}
 	
 	// PRE: method is passed an array, integer, and item to check | POST: searches the array for a value and if found it equals true, else false
 	public static boolean check (String [] array, int arrayLength, String item) {
-		boolean found = false;									// sets found initially to false
+		boolean found = false;						// sets found initially to false
 		int k = 0;
 		while (!found && k < arrayLength)						
-			if ((array[k]).equals(item))						// if item is found, found becomes true
+			if ((array[k]).equals(item))				// item is found
 				found = true;
-			else k++;											// if item is not found then it searches next index
+			else k++;						// item not found, search next index
 		if (found) return true;									
 		else return false;
 	}
 	
 	// PRE: method is passed an array, integer, and item | POST: searches the array for a value and if found it returns the index the value is at
 	public static int search (int [] array, int arrayLength, int item) {
-		boolean found = false;									// sets found initially to false
+		boolean found = false;
 		int k = 0;
 		while (!found && k < arrayLength)						
-			if ((array[k]) == item)								// if item is found, found becomes true
+			if ((array[k]) == item)					// item is found
 				found = true;
-			else k++;											// if item is not found then it searches next index
+			else k++;						// item not found, search next index
 		if (found) return k;									
 		else return -1;
 	}
 	
 	// PRE: method is passed an array, integer, and item | POST: searches the array for a value and if found it returns the index the value is at
 	public static int search (String [] array, int arrayLength, String item) {
-		boolean found = false;									// sets found initially to false
+		boolean found = false;
 		int k = 0;
 		while (!found && k < arrayLength)						
-			if ((array[k]).equals(item))						// if item is found, found becomes true
+			if ((array[k]).equals(item))				// item is found
 				found = true;
-			else k++;											// if item is not found then it searches next index
+			else k++;						// item not found, search next index
 		if (found) return k;									
 		else return -1;
 	}
 	
 	// PRE: method is passed an array and item to be inserted | POST: returns array with new item entered
 	public static String [] insert (String [] array, String item) {
-		array = resize(array, array.length+1);					// resizes array
-		array[array.length-1] = item;							// inserts item into new index created from resizing
+		array = resize(array, array.length+1);
+		array[array.length-1] = item;					// inserts item into new index created from resizing
 		return array;
 	}
 	
 	// PRE: method is passed an array and item to be inserted | POST: returns array with new item entered
 	public static int [] insert (int [] array, int item) {
-		array = resize(array, array.length+1);					// resizes array
-		array[array.length-1] = item;							// inserts item into new index created from resizing
+		array = resize(array, array.length+1);
+		array[array.length-1] = item;					// inserts item into new index created from resizing
 		return array;
 	}
 	

@@ -8,14 +8,14 @@ import java.text.DecimalFormat;
 public class A6WilliamFaunce {
 
 	public static void main(String[] args) throws IOException {
-		Scanner scan = new Scanner(System.in);								// scanner for user input
-		DecimalFormat fmt = new DecimalFormat("#.0");						// format for showing only one decimal point
+		Scanner scan = new Scanner(System.in);					// scanner for user input
+		DecimalFormat fmt = new DecimalFormat("#.0");				// format for showing only one decimal point
 		
-		String [] studentID;												// array for student ID
-		String fileName = "";												// initializes fileName so that the user can enter the name later
-		int [] midterm;														// array for midterm grades
-		int [] finalGrade;													// array for final grades
-		int [] midCount = {0,0,0,0,0};										// array for midterm analysis
+		String [] studentID;							// array for student ID
+		String fileName = "";							// initializes fileName so that the user can enter the name later
+		int [] midterm;								// array for midterm grades
+		int [] finalGrade;							// array for final grades
+		int [] midCount = {0,0,0,0,0};						// array for midterm analysis
 		int [] finalCount = {0,0,0,0,0};
 		
 		int a = 0;															// initialized integer used for the index of arrays
@@ -25,14 +25,14 @@ public class A6WilliamFaunce {
 		System.out.println("");
 		System.out.print("Enter name of file: ");
 		
-		fileName = scan.nextLine();											// sets the string fileName equal to the user's input
-		Scanner filescan = new Scanner(new FileReader(fileName)); 			// scanner for reading the file
+		fileName = scan.nextLine();						// sets the string fileName equal to the user's input
+		Scanner filescan = new Scanner(new FileReader(fileName)); 		// scanner for reading the file
 		
 		System.out.println("");
 		System.out.println(String.format("%-10s %-10s %-10s %-10s %-10s", "Student", "Midterm", "Grade", "Final", "Grade"));
 		System.out.println("-------------------------------------------------");
 		
-		int classSize = filescan.nextInt();									// scans first line of file to determine class size
+		int classSize = filescan.nextInt();					// scans first line of file to determine class size
 		
 		// sets the array sizes equal to the class size
 		studentID = new String[classSize];
@@ -44,7 +44,7 @@ public class A6WilliamFaunce {
 			studentID[a] = filescan.next();
 			midterm[a] = filescan.nextInt();
 			finalGrade[a] = filescan.nextInt();
-			++a;															// increases "a" by 1 to store the next data point in the next index
+			++a;								// increases "a" by 1 to store the next data point in the next index
 		}
 		
 		// for loop that displays output of data from the while loop
@@ -73,9 +73,7 @@ public class A6WilliamFaunce {
 					break;
 			}
 		}
-		
 		System.out.println(counter(midCount));				// displays the number of times a letter grade has appeared
-		
 		
 		// FINAL ANALYSIS
 		System.out.println("Final Analysis");
@@ -96,7 +94,6 @@ public class A6WilliamFaunce {
 					break;
 			}
 		}
-		
 		System.out.println(counter(finalCount));
 		
 		// closes both scanners
@@ -106,13 +103,11 @@ public class A6WilliamFaunce {
 
 	// PRE: passed an array reference | POST: returns the arithmetic mean
 	public static double mean (int [] data) {
-		double result = 0;								// initializes double result
+		double result = 0;						// initializes double result
 		
 		// for loop to add up all the values in the array
-		for (int k = 0; k < data.length; k++) {
+		for (int k = 0; k < data.length; k++)
 			result += data[k];
-		}
-		
 		result = result / data.length;					// divides sum by number of values in array
 		
 		return result;
@@ -120,13 +115,12 @@ public class A6WilliamFaunce {
 	
 	// PRE: passed an array reference and the mean | POST: returns the standard deviation
 	public static double deviate (int [] data, double mean) {
-		double total = 0;							// initializes double total
+		double total = 0;						// initializes double total
 		
 		// for loop to total values based on given formula for standard deviation
-		for (int k = 0; k < data.length; k++) {
+		for (int k = 0; k < data.length; k++)
 			total += Math.pow(data[k] - mean,2) / data.length;
-		}
-		double result = Math.sqrt(total);			// square roots the total to determine the standard deviation
+		double result = Math.sqrt(total);				// square roots the total to determine the standard deviation
 		
 		return result;
 	}
@@ -136,17 +130,16 @@ public class A6WilliamFaunce {
 		String letter = "";						// initializes string letter to be assigned later
 		
 		// if else statements used as equations for calculating the letter grade
-		if (mean + 1.5*deviate <= data[n]) {
-				letter = "A";
-		} else if (((mean + 0.5*deviate) <= data[n]) && (data[n] < (mean + 1.5*deviate))) {
-				letter = "B";
-		} else if (((mean - 0.5*deviate) <= data[n]) && (data[n] < (mean + 0.5*deviate))) {
-				letter = "C";
-		} else if (((mean - 1.5*deviate) <= data[n]) && (data[n] < (mean - 0.5*deviate))) {
-				letter = "D";
-		} else if (data[n] < (mean - 1.5*deviate)) {
-				letter = "E";
-		}
+		if (mean + 1.5*deviate <= data[n])
+			letter = "A";
+		else if (((mean + 0.5*deviate) <= data[n]) && (data[n] < (mean + 1.5*deviate)))
+			letter = "B";
+		else if (((mean - 0.5*deviate) <= data[n]) && (data[n] < (mean + 0.5*deviate)))
+			letter = "C";
+		else if (((mean - 1.5*deviate) <= data[n]) && (data[n] < (mean - 0.5*deviate)))
+			letter = "D";
+		else if (data[n] < (mean - 1.5*deviate))
+			letter = "E";
 			
 		return letter;
 	}
@@ -164,9 +157,8 @@ public class A6WilliamFaunce {
 				if (i == 2) System.out.print("C: ");
 				if (i == 3) System.out.print("D: ");
 				if (i == 4) System.out.print("E: ");
-					for (int b = 0; b < c[i]; b++) {
-						System.out.print("*");
-					}
+				for (int b = 0; b < c[i]; b++)
+					System.out.print("*");
 				System.out.println();
 			}
 		}
