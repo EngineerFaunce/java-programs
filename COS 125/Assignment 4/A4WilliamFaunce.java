@@ -29,12 +29,12 @@ public class A4WilliamFaunce {
 		int cCount = 0;							// Calais count
 		
 		String month = "";						// initializes month to be scanned later
-		double avgMonth = 0;					// initializes historical average to be scanned later
+		double avgMonth = 0;						// initializes historical average to be scanned later
 		
-		DecimalFormat fmt = new DecimalFormat("#.00");									// formats doubles to two decimal places
-		Scanner filescan = new Scanner(new FileReader("weather.txt"));					// scanner used to scan weather.txt file
-		Scanner file2scan = new Scanner(new FileReader("averages.txt"));				// scanner used to scan averages.txt file
-		PrintWriter writer = new PrintWriter (new File("weatherout.txt"));				// writes output to specified file
+		DecimalFormat fmt = new DecimalFormat("#.00");				// formats doubles to two decimal places
+		Scanner filescan = new Scanner(new FileReader("weather.txt"));		// scanner used to scan weather.txt file
+		Scanner file2scan = new Scanner(new FileReader("averages.txt"));	// scanner used to scan averages.txt file
+		PrintWriter writer = new PrintWriter (new File("weatherout.txt"));	// writes output to specified file
 		
 		// processing and outputs
 		writer.println("Weather Watch by William Faunce");
@@ -51,14 +51,12 @@ public class A4WilliamFaunce {
 			avgTemp = avgTemp + temp;													// adds new temperature entry to calculate avgTemp later
 			
 			// used to determine maxTemp by comparing temp to temporary temp
-			if (temp > tTemp) {
+			if (temp > tTemp)
 				maxTemp = temp;
-			}
 			
 			// used to determine minTemp by comparing temp to temporary temp
-			if (temp < tTemp) {
+			if (temp < tTemp)
 				minTemp = temp;
-			}
 			
 			tTemp = temp;
 			windD = filescan.next();
@@ -75,15 +73,12 @@ public class A4WilliamFaunce {
 			writer.println(String.format("%-12s %-12s %-12s %-12s %-12s %-12s %-12s", town, date, fmt.format(temp), windD, fmt.format(windS), fmt.format(windC), firstI+lastI));
 
 			// if statement used to determine number of readings per town/city
-			if (town.equals("BANGOR")) {
+			if (town.equals("BANGOR"))
 				++bCount;
-			}
-			else if (town.equals("ORONO")) {
+			else if (town.equals("ORONO"))
 				++oCount;
-			}
-			else {
+			else
 				++cCount;
-			}
 		}
 		
 		avgTemp = avgTemp/(double)count;												// calculates average temperature
@@ -134,7 +129,6 @@ public class A4WilliamFaunce {
 		filescan.close();						// closes scanner
 		file2scan.close();						// closes scanner 
 		writer.close();							// closes writer
-		
 	}
 
 }
