@@ -6,19 +6,19 @@ import java.util.Scanner;
 public class A8WilliamFaunce {
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);									// scanner for user input
+		Scanner scan = new Scanner(System.in);			// scanner for user input
 		
-		int capacity = 0;														// capacity of forest
-		double density = 0;														// density of trees
-		int treeCount = 0;														// counter for number of trees in forest
-		int burnCount = 0;														// counter for number of trees burned
+		int capacity = 0;					// capacity of forest
+		double density = 0;					// density of trees
+		int treeCount = 0;					// counter for number of trees in forest
+		int burnCount = 0;					// counter for number of trees burned
 		
 		System.out.print("Enter number of trees: ");
 		capacity = scan.nextInt();
 		System.out.print("Enter density: ");
 		density = scan.nextDouble();
 		
-		String [][] forest = new String[capacity][capacity];					// array for the forest to create
+		String [][] forest = new String[capacity][capacity];	// array for the forest to create
 		
 		// OUTPUT
 		// while loop that produces a valid forest and randomly populates with trees
@@ -32,7 +32,7 @@ public class A8WilliamFaunce {
 					// if loop that calls the tree method to create trees (T's)
 					if (tree(density) == true) {
 						forest[row][col] = " T ";
-						treeCount++;						// adds 1 to the treeCount when a tree is created
+						treeCount++;
 					}
 					System.out.print(forest[row][col]);
 				}
@@ -46,10 +46,9 @@ public class A8WilliamFaunce {
 			for (int row=0; row < forest.length; row++) {
 				for (int col=0; col < forest.length; col++) {
 					System.out.print(forest[row][col]);
-					// adds 1 to the burnCount if a " B " is found in any of the rows/columns
-					if (forest[row][col] == " B ") {
+					// adds 1 to the burnCount if a "B" is found in any of the rows/columns
+					if (forest[row][col] == " B ")
 						burnCount++;
-					}
 				}
 				System.out.println();
 			}
@@ -79,16 +78,15 @@ public class A8WilliamFaunce {
 
 	// PRE: passed the desired density of the forest | POST: randomly generates trees for the forest
 	public static boolean tree (double density) {
-		if ((int)((Math.random()) * 101) <= density * 100) {
+		if ((int)((Math.random()) * 101) <= density * 100)
 			return true;
-		} else {
+		else
 			return false;
-		}
 	}
 	
 	// PRE: passed the amount of trees and size of the forest | POST: returns percentage of trees in forest
 	public static double percent (int treeCount, int arrayLength) {
-		double totalArray = arrayLength * arrayLength;							// size of forest (length*width)
+		double totalArray = arrayLength * arrayLength;			// size of forest (length*width)
 		double result = (double)treeCount / totalArray;
 		
 		return result;
