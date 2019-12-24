@@ -1,0 +1,11 @@
+# Compiled source #
+###################
+*.o
+
+# Misc. files #
+###############
+*.zip
+*.pdf
+*.docx
+*.pptx
+*.png
