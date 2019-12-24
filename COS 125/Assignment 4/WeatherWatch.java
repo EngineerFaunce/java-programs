@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.text.DecimalFormat;
 import java.io.*;
 
-public class A4WilliamFaunce {
+public class WeatherWatch {
 
 	public static void main(String[] args) throws IOException {
 		String town; // name of town
