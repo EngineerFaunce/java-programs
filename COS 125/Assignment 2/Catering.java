@@ -1,33 +1,36 @@
-// William Faunce
 // This program produces a customer's bill
 
+import java.util.Locale;
 import java.util.Scanner;
 import java.text.NumberFormat;
+import java.util.Currency;
 
 public class Catering {
 
 	public static void main(String[] args) {
-		final double BEEF = 12.95; // declares price of BEEF
-		final double CHIC = 10.95; // declares price of CHICken
-		final double VEG = 8.95; // declares price of VEGan meal
+		final double BEEF = 12.95; // price of beef meal
+		final double CHIC = 10.95; // price of chicken meal
+		final double VEG = 8.95; // price of vegan meal
 
-		double roomt = 0; // initializes room total
-		double rmtax = 0; // initializes room tax
+		// room capacities and associated fees
+		final int ROOM1 = 200;
+		final int ROOM2 = 150;
+		final int ROOM3 = 100;
+		final int ROOM4 = 30;
+		final double FEE1 = 250.00;
+		final double FEE2 = 200.00;
+		final double FEE3 = 100.00;
+		final double FEE4 = 50.00;
 
-		int room1 = 200; // declares capacity of room 1
-		int room2 = 150; // declares capacity of room 2
-		int room3 = 100; // declares capacity of room 3
-		int room4 = 30; // declares capacity of room 4
-		final double FEE1 = 250.00; // room 1 rental fee
-		final double FEE2 = 200.00; // room 2 rental fee
-		final double FEE3 = 100.00; // room 3 rental fee
-		final double FEE4 = 50.00; // room 4 rental fee
+		final double TAX1 = 0.18; // gratuity tax
+		final double TAX2 = 0.065; // state tax
 
-		final double TAX1 = 0.18; // declares gratuity tax
-		final double TAX2 = 0.065; // declares state tax
+		double roomTotal = 0; // initializes room total
+		double roomTax = 0; // initializes room tax
 
-		// makes it so a $ displays in the output
+		// used later for displaying a $ in the output
 		NumberFormat fmtC = NumberFormat.getCurrencyInstance();
+		fmtC.setCurrency(Currency.getInstance(Locale.US));
 
 		Scanner scan = new Scanner(System.in); // takes the user's input
 
@@ -51,63 +54,59 @@ public class Catering {
 		// creates an error for negative numbers
 		if (meal1 < 0 || meal2 < 0 || meal3 < 0) {
 			System.out.print("Invalid data. Number cannot be negative.");
-			System.exit(1);
+			System.exit(-1);
 		}
 
-		// Processing and output
-		System.out.println("");
-		System.out.println("Catering by William Faunce");
+		/* Processing and output */
+		System.out.println("\nCatering Bill\n------------------------");
 		System.out.printf("%-30s %20s %n", "Number in party: ", "" + guests);
 
 		// Determines which room is assigned and its cost
-		if (guests <= room4 && guests > 0) {
+		if (guests <= ROOM4 && guests > 0) {
 			System.out.printf("%-30s %20s %n", "Room Cost: ", "" + fmtC.format(FEE4));
-			System.out.printf("%-30s %20s %n", "Room Tax: ", "" + fmtC.format(FEE4 * TAX2));
-			roomt = FEE4; // sets room total equal to room 4 fee
-			rmtax = (FEE4 * TAX2); // declares room tax fee
-		} else if (guests <= room3 && guests > room4) {
+			System.out.printf("%-30s %20s %n %n", "Room Tax: ", "" + fmtC.format(FEE4 * TAX2));
+			roomTotal = FEE4;
+			roomTax = (FEE4 * TAX2);
+		} else if (guests <= ROOM3 && guests > ROOM4) {
 			System.out.printf("%-30s %20s %n", "Room Cost: ", "" + fmtC.format(FEE3));
-			System.out.printf("%-30s %20s %n", "Room Tax: ", "" + fmtC.format(FEE3 * TAX2));
-			roomt = FEE3; // sets room total equal to room 3 fee
-			rmtax = (FEE3 * TAX2); // declares room tax fee
-		} else if (guests <= room2 && guests > room3) {
+			System.out.printf("%-30s %20s %n %n", "Room Tax: ", "" + fmtC.format(FEE3 * TAX2));
+			roomTotal = FEE3;
+			roomTax = (FEE3 * TAX2);
+		} else if (guests <= ROOM2 && guests > ROOM3) {
 			System.out.printf("%-30s %20s %n", "Room Cost: ", "" + fmtC.format(FEE2));
-			System.out.printf("%-30s %20s %n", "Room Tax: ", "" + fmtC.format(FEE2 * TAX2));
-			roomt = FEE2; // sets room total equal to room 2 fee
-			rmtax = (FEE2 * TAX2); // declares room tax fee
-		} else if (guests <= room1 && guests > room2) {
+			System.out.printf("%-30s %20s %n %n", "Room Tax: ", "" + fmtC.format(FEE2 * TAX2));
+			roomTotal = FEE2;
+			roomTax = (FEE2 * TAX2);
+		} else if (guests <= ROOM1 && guests > ROOM2) {
 			System.out.printf("%-30s %20s %n", "Room Cost: ", "" + fmtC.format(FEE1));
-			System.out.printf("%-30s %20s %n", "Room Tax: ", "" + fmtC.format(FEE1 * TAX2));
-			roomt = FEE1; // sets room total equal to room 1 fee
-			rmtax = (FEE1 * TAX2); // declares room tax fee
+			System.out.printf("%-30s %20s %n %n", "Room Tax: ", "" + fmtC.format(FEE1 * TAX2));
+			roomTotal = FEE1;
+			roomTax = (FEE1 * TAX2);
 		}
 
-		double beeft = meal1 * BEEF; // declares beef meal total
-		double chict = meal2 * CHIC; // declares chicken meal total
-		double vegt = meal3 * VEG; // declares vegan meal total
+		// meal totals
+		double beeft = meal1 * BEEF;
+		double chict = meal2 * CHIC;
+		double vegt = meal3 * VEG;
 
 		// Displays amount of meals requested and their cost
 		if (meal1 > 0) {
-			System.out.printf("%-30s %3s %n", "Number of beef dinners: ", meal1);
-			System.out.printf("%-30s %20s %n", "Cost of beef dinners: ", fmtC.format(beeft));
-		} else
-			;
+			System.out.printf("%-30s %20s %n", "Number of beef dinners: ", meal1);
+			System.out.printf("%-30s %20s %n %n", "Cost of beef dinners: ", fmtC.format(beeft));
+		}
 		if (meal2 > 0) {
-			System.out.printf("%-30s %3s %n", "Number of chicken dinners: ", meal2);
-			System.out.printf("%-30s %20s %n", "Cost of chicken dinners: ", fmtC.format(chict));
-		} else
-			;
+			System.out.printf("%-30s %20s %n", "Number of chicken dinners: ", meal2);
+			System.out.printf("%-30s %20s %n %n", "Cost of chicken dinners: ", fmtC.format(chict));
+		}
 		if (meal3 > 0) {
-			System.out.printf("%-30s %3s %n", "Number of vegan dinners: ", meal3);
-			System.out.printf("%-30s %20s %n", "Cost of vegan dinners: ", fmtC.format(vegt));
-		} else
-			;
+			System.out.printf("%-30s %20s %n", "Number of vegan dinners: ", meal3);
+			System.out.printf("%-30s %20s %n %n", "Cost of vegan dinners: ", fmtC.format(vegt));
+		}
 
 		double foodg = ((beeft + chict + vegt) * TAX1); // food gratuity
-		double total = roomt + rmtax + beeft + chict + vegt + foodg; // bill total
+		double total = roomTotal + roomTax + beeft + chict + vegt + foodg; // bill total
 
 		System.out.printf("%-30s %20s %n", "Food Gratuity: ", "" + fmtC.format(foodg));
-		System.out.println("");
 		System.out.printf("%-30s %20s %n", "Total: ", "" + fmtC.format(total));
 	}
 
