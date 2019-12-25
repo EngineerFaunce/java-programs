@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.text.NumberFormat;
 
-public class A3WilliamFaunce {
+public class Ski_Production {
 
 	public static void main(String[] args) {
 
