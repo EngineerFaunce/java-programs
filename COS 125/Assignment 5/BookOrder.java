@@ -1,10 +1,9 @@
-// William Faunce
 // This program creates an order for books based on the file's input
 
 import java.util.Scanner;
 import java.io.*;
 
-public class A5WilliamFaunce {
+public class BookOrder {
 
 	public static void main(String[] args) throws IOException {
 		String title = "";					// title of book
