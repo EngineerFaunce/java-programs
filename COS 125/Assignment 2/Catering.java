@@ -47,13 +47,13 @@ public class Catering {
 
 		// used to limit number of guests
 		if (guests > 200) {
-			System.out.print("Invalid. Max capacity is 200.");
+			System.out.print("Invalid. Max capacity is 200.\n");
 			System.exit(1);
 		}
 
 		// creates an error for negative numbers
 		if (meal1 < 0 || meal2 < 0 || meal3 < 0) {
-			System.out.print("Invalid data. Number cannot be negative.");
+			System.out.print("Invalid data. Number cannot be negative.\n");
 			System.exit(-1);
 		}
 
