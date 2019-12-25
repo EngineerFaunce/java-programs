@@ -1,7 +1,4 @@
 ## Objective
-The student is tasked with creating a basic program that will calculate a budget for a user.
+The student is tasked with creating a basic program that will calculate a budget for a user. Below you will find a sample output.
 
-## Components
-The project is composed of the following file(s):
-  - A1WilliamFaunce.java which is the source file of the project
-  - sample.PNG which is a sample output created by the student
+![sample output](https://github.com/EngineerFaunce/umaine-java-programs/blob/master/COS%20125/Assignment%201/sample.PNG)
