@@ -10,11 +10,27 @@
 # Directories #
 ###############
 /.vscode/*
+out/
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
 # Misc. files #
 ###############
-*.zip
 *.pdf
 *.docx
 *.doc
 *.pptx
+*.iml
