@@ -1,3 +1,12 @@
+# Fancy stuff #
+###############
+# * - ignores all files
+# !/**/ - unignores directories
+# !*.* - unignores files with an extension
+*
+!/**/
+!*.*
+
 # Directories #
 ###############
 /.vscode/*
@@ -9,4 +18,3 @@
 *.docx
 *.doc
 *.pptx
-*.PNG
