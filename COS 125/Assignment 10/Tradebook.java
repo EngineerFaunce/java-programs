@@ -44,8 +44,6 @@ public class Tradebook extends Book {
 	
 	// POST: returns price after adding markup to base price
 	public double retailPrice() {
-		double markup = price * MARKUP;
-		double retailPrice = price + markup;
-		return retailPrice;
+		return price + (price * MARKUP);
 	}
 }
