@@ -34,3 +34,4 @@ out/
 *.doc
 *.pptx
 *.iml
+*.code-workspace
