@@ -1,8 +1,6 @@
 // William Faunce
 // This program gives a list of textbooks for a student based on input
 
-package bookProgram;
-
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

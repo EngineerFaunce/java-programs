@@ -1,5 +1,3 @@
-package bookProgram;
-
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -28,7 +26,7 @@ public class BooklistGenerator {
              * to the booklist array.
              */
             if (filescan.next().equals("Textbook")) {
-                
+
             }
         }
 
