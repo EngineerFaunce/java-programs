@@ -46,4 +46,9 @@ public class Textbook extends Book {
 		return price + (price * MARKUP);
 	}
 
+	public void getBookInfo() {
+		System.out.print("Book title: " + this.title + "\nBook Author: " + this.author + "\nBook ISBN: " + this.isbn
+				+ "\nBook Price (before markup): " + format.format(price) + "\n");
+	}
+
 }

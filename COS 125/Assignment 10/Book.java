@@ -1,11 +1,14 @@
 // William Faunce
 // Base class for creating book objects
 
+import java.text.NumberFormat;
+
 public abstract class Book {
 	protected String title; // title of book
 	protected String author; // author of book
 	protected String isbn; // ISBN of book
 	protected double price; // wholesale price of book
+	NumberFormat format = NumberFormat.getCurrencyInstance();
 
 	// default constructor for a book
 	public Book() {
@@ -64,4 +67,6 @@ public abstract class Book {
 	}
 
 	public abstract double retailPrice();
+
+	public abstract void getBookInfo();
 }
