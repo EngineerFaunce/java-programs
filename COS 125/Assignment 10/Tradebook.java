@@ -14,7 +14,7 @@ public class Tradebook extends Book {
 	}
 
 	// constructor for parameterized tradebook
-	public Tradebook(String bookTitle, String bookAuthor, int bookIsbn, double bookPrice, String classMajor,
+	public Tradebook(String bookTitle, String bookAuthor, String bookIsbn, double bookPrice, String classMajor,
 			double retailPr) {
 		super(bookTitle, bookAuthor, bookIsbn, bookPrice);
 		major = classMajor;

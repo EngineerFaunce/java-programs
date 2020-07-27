@@ -14,7 +14,7 @@ public class Textbook extends Book {
 	}
 
 	// constructor for parameterized textbook
-	public Textbook(String bookTitle, String bookAuthor, int bookIsbn, double bookPrice, String courseID,
+	public Textbook(String bookTitle, String bookAuthor, String bookIsbn, double bookPrice, String courseID,
 			double retailPr) {
 		super(bookTitle, bookAuthor, bookIsbn, bookPrice);
 		course = courseID;
