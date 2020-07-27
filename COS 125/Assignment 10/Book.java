@@ -34,7 +34,7 @@ public abstract class Book {
 	}
 
 	// POST: returns isbn number
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
