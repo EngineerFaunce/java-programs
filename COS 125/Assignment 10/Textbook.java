@@ -5,13 +5,13 @@ public class Textbook extends Book {
 	private String course;
 	private final double MARKUP = 0.1;
 
-	// constructor for empty textbook
+	// default constructor
 	public Textbook() {
 		super();
 		course = "";
 	}
 
-	// constructor for parameterized textbook
+	// parameterized constructor
 	public Textbook(String bookTitle, String bookAuthor, String bookIsbn, double bookPrice, String courseID) {
 		super(bookTitle, bookAuthor, bookIsbn, bookPrice);
 		course = courseID;
@@ -34,7 +34,7 @@ public class Textbook extends Book {
 
 	public void getBookInfo() {
 		System.out.print("Book title: " + this.title + "\nBook Author: " + this.author + "\nBook ISBN: " + this.isbn
-				+ "\nBook Price (before markup): " + format.format(price) + "\n");
+				+ "\nBook Price (before markup): " + format.format(price) + "\nCourse: " + this.course);
 	}
 
 }
