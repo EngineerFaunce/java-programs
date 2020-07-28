@@ -8,7 +8,7 @@ public abstract class Book {
 	protected String author; // author of book
 	protected String isbn; // ISBN of book
 	protected double price; // wholesale price of book
-	NumberFormat format = NumberFormat.getCurrencyInstance();
+	protected NumberFormat format = NumberFormat.getCurrencyInstance();
 
 	// default constructor for a book
 	public Book() {

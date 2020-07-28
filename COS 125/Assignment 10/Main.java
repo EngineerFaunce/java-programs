@@ -1,30 +1,37 @@
 // William Faunce
-// This program gives a list of textbooks for a student based on input
+// This program will give a student a list of textbooks needed 
+// for courses as well as a list of related tradebooks of interest to the major.
 
-import java.io.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		Scanner scan = new Scanner(System.in); // scanner for user input
-		NumberFormat price = new DecimalFormat("$0.00"); // format for adding a $ sign for pricing
+		BooklistGenerator data = new BooklistGenerator();
+		data.LoadData();
 
-		String input = "";
+		Scanner scan = new Scanner(System.in); // scanner for user input
+
+		// System.out.print(data.booklist[0].getTitle());
 
 		System.out.print("Enter your major: ");
-
-		int c = 0; // counter
+		String userMajor = scan.next();
+		String[] userCourses = new String[5];
+		int count = 0;
 
 		do {
 			System.out.print("Enter course name (xxx to quit): ");
-			input = scan.next();
+			userCourses[count] = scan.next();
+			count++;
+		} while (!userCourses[count - 1].equals("xxx") && count < 5);
 
-		} while (!input.equals("xxx"));
-
-		System.out.println("\nList of textbooks: ");
+		System.out.print("\n\nList of textbooks: ");
+		for(int i=0;i < 5; i++) {
+			
+		}
+		
 
 		scan.close();
 
