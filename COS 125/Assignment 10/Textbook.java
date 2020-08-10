@@ -32,9 +32,11 @@ public class Textbook extends Book {
 		return price + (price * MARKUP);
 	}
 
+	// POST: prints out the course ID, book title, author, and retail price of a
+	// textbook
 	public void getBookInfo() {
-		System.out.print("Book title: " + this.title + "\nBook Author: " + this.author + "\nBook ISBN: " + this.isbn
-				+ "\nBook Price (before markup): " + format.format(price) + "\nCourse: " + this.course);
+		System.out.printf("\n %-6s %-55s %-20s %7s", this.course, this.title, this.author,
+				format.format(this.retailPrice()));
 	}
 
 }
