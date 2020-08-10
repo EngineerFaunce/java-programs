@@ -3,7 +3,7 @@ This directory contains coding assignments for an introductory Java course I too
 
 Since this was my first year with programming don't expect anything too crazy. I've begun going back through and improving bits and pieces of code.
 
-## Important
+## Notice
 As of right now assignment(s) 10 and 11 are incomplete, but I plan to come back and finish them eventually.
-- [ ] Assignment 10
+- [x] Assignment 10
 - [ ] Assignment 11
