@@ -32,8 +32,8 @@ public class Tradebook extends Book {
 		return price + (price * MARKUP);
 	}
 
+	// Returns the title, author, and then retail price of the tradebook
 	public void getBookInfo() {
-		System.out.print("Book title: " + this.title + "\nBook Author: " + this.author + "\nBook ISBN: " + this.isbn
-				+ "\nBook Price (before markup): " + format.format(price) + "\nMajor: " + major);
+		System.out.printf("\n %-55s %-20s %7s", this.title, this.author, format.format(this.retailPrice()));
 	}
 }
