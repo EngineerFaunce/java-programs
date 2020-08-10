@@ -59,9 +59,14 @@ public class Main {
 
 		System.out.print("\nList of textbooks:\n");
 		Iterator<Book> iterator = textbooks.iterator();
+		double textbook_sum = 0.00;
 		while (iterator.hasNext()) {
-			iterator.next().getBookInfo();
+			Book temp = iterator.next();
+			textbook_sum += temp.retailPrice();
+			temp.getBookInfo();
 		}
+		System.out.print("\nSum of retail book prices: " + textbook_sum);
+
 		System.out.print("\n\nList of tradebooks:\n");
 		iterator = tradebooks.iterator();
 		while (iterator.hasNext()) {
