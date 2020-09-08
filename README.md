@@ -1,2 +1,2 @@
 # Description
-This repo is a collection of Java homework assignments during my time at the University of Maine.
+A collection of Java programs that I have made while attending the University of Maine.
