@@ -1,7 +1,7 @@
 public class Course {
 	
 	String courseName;									// name of course (ex. COS225)
-	String letterGrade;									// letter grade (ex. A)
+	String letterGrade;									// letter grade (ex. A-)
 	int creditHours;									// number of credit hours (ex. 4)
 	
 	public Course ( )									// POST: construct empty course
@@ -33,12 +33,29 @@ public class Course {
 		this.creditHours = creditHours;					// POST: set credit hours
 	}
 	
-	public String toString ()							// POST: return string on course data
+	public String toString()							// POST: return string on course data
 	{	return courseName + " " + letterGrade + " " +  creditHours; }
 	
-	public double qualityPoints ( )						// POST: return quality points 
+	public double qualityPoints()						// POST: return quality points 
 	{
-		return 0.0;										// write correct code 
+		double creditPts = 0;
+		switch(this.getLetterGrade())
+		{
+			case "A":	creditPts = 4.00; break;
+			case "A-": 	creditPts = 3.67; break;
+			case "B+": 	creditPts = 3.33; break;
+			case "B": 	creditPts = 3.00; break;
+			case "B-": 	creditPts = 2.67; break;
+			case "C+": 	creditPts = 2.33; break;
+			case "C": 	creditPts = 2.00; break;
+			case "C-": 	creditPts = 1.67; break;
+			case "D+": 	creditPts = 1.33; break;
+			case "D": 	creditPts = 1.00; break;
+			case "D-": 	creditPts = 0.70; break;
+			case "F": 	creditPts = 0.00; break;
+			default:	creditPts = 0.00;
+		}
+		return creditPts * creditHours;
 	}
 	
 	

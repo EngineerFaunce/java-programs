@@ -18,38 +18,72 @@ public class Student {
 		currentQualityPoints = 0.0;
 	}
 
-	// accessors and mutators
+	// accessors
 	public String getfName() {	return fName;	}
-	public void setfName(String fName) {this.fName = fName;	}
 	public String getlName() {	return lName;	}
-	public void setlName(String lName) { this.lName = lName;	}
 	public String getStudentID() {	return studentID;	}
-	public void setStudentID(String studentID) { this.studentID = studentID;	}
 	public ArrayList<Course> getCourseList() {	return courseList;	}
-	public void setCourseList(ArrayList<Course> courseList) {	this.courseList = courseList;	}
 	public int getCurrentCreditHours() { return currentCreditHours;	}
-	public void setCurrentCreditHours(int currentCreditHours) {	this.currentCreditHours = currentCreditHours;	}
 	public double getCurrentQualityPoints() { return currentQualityPoints;	}
+	// mutators
+	public void setfName(String fName) {this.fName = fName;	}
+	public void setlName(String lName) { this.lName = lName;	}
+	public void setStudentID(String studentID) { this.studentID = studentID;	}
+	public void setCourseList(ArrayList<Course> courseList) {	this.courseList = courseList;	}
+	public void setCurrentCreditHours(int currentCreditHours) {	this.currentCreditHours = currentCreditHours;	}
 	public void setCurrentQualityPoints(double currentQualityPoints) {	this.currentQualityPoints = currentQualityPoints;	}
-	
-	public String toString ( )								// POST: return string of data
-	{	return fName + " " + lName + " " + studentID + "\nCourses: " + courseList.toString();   
+
+	// POST: return string of data
+	public String toString()
+	{
+		return fName + " " + lName + " " + studentID + "\nCourses: " + courseList.toString();   
 	}
 	
-	public void addCourse (Course c)						// POST: add course list of courses
+	// POST: add course list of courses
+	public void addCourse(Course c)
 	{
-															// write code
+		courseList.add(c);
 	}
-		
-	public double semesterGPA ( )							// POST: return semester GPA
+
+	// POST: return semester GPA
+	public double semesterGPA()
 	{
-		return 0.0;											// write correct code
+		double totalCreditHours = 0;
+		double totalQualityPoints = 0;
+		Course temp;
+
+		for(int i=0; i < courseList.size(); i++)
+		{
+			temp = courseList.get(i);
+			totalCreditHours += temp.getCreditHours();
+			totalQualityPoints += temp.qualityPoints();
+		}
+
+		if(totalQualityPoints == 0.00)
+		{
+			return 0.00;
+		}
+		else
+		{
+			return  totalQualityPoints / totalCreditHours;
+		}
 	}
 	
-	
-	public double cumulativeGPA ( )							// POST: return new cumulative GPA factoring in this semester
+	// POST: return new cumulative GPA factoring in this semester
+	public double cumulativeGPA()
 	{
-		return 0.0;											// write correct code					
+		double totalCreditHours = 0;
+		double totalQualityPoints = 0;
+		Course temp;
+
+		for(int i=0; i < courseList.size(); i++)
+		{
+			temp = courseList.get(i);
+			totalCreditHours += temp.getCreditHours();
+			totalQualityPoints += temp.qualityPoints();
+		}
+
+		return (this.currentQualityPoints + totalQualityPoints) / (this.currentCreditHours + totalCreditHours);				
 	}
 }
 
