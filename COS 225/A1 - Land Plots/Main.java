@@ -8,36 +8,38 @@ import java.util.Random;
 public class Main {
 
 	public static void main(String[] args) {
-		Rectangle2D[] plots = new Rectangle2D[4]; // creates an array for the plots
+		Rectangle2D[] plots = new Rectangle2D[4];
 		Random ran = new Random(); // used as a randomizer for plot points
 
 		int count = 0; // counter
-
 		Boolean bool = true;
-		while (bool) { // while loop that fills the array with plots and ensures no overlap
-			for (int a = 0; a < 4; a++) {
-				plots[a] = new Rectangle2D((double) (ran.nextInt(16)), (double) (ran.nextInt(16)), 4.0, 4.0);
+
+		// fills the plots array and ensures no overlap
+		while (bool) {
+			for (int i = 0; i < 4; i++) {
+				plots[i] = new Rectangle2D((double) (ran.nextInt(16)), (double) (ran.nextInt(16)), 4.0, 4.0);
 			}
 			count = 0;
-			for (int u = 0; u < 4; u++) { // nested for loop to ensure that there is no plots overlapping
-				for (int i = 0; i < 4; i++) {
-					if ((plots[u].overlaps(plots[i])) || (plots[u].contains(plots[i])))
+
+			// ensure that there are no plots overlapping
+			for (int j = 0; j < 4; j++) {
+				for (int k = 0; k < 4; k++) {
+					if ((plots[i].overlaps(plots[k])) || (plots[i].contains(plots[k])))
 						count++;
 				}
 			}
-			if (count == 0) // if statement that breaks out of the while loop
+
+			if (count == 0)
 				bool = false;
 		}
 
 		// OUTPUT
-		System.out.println("William Faunce");
-		System.out.println("");
-		System.out.println("Plot 1: " + plots[0].getPoint().toString());
-		System.out.println("Plot 2: " + plots[1].getPoint().toString());
-		System.out.println("Plot 3: " + plots[2].getPoint().toString());
-		System.out.println("Plot 4: " + plots[3].getPoint().toString());
+		System.out.print("Land Plots\n\n");
+		for(int i=0; i < 4; i++) {
+			System.out.print("Plot %d: %s\n", i, plot[i].getPoint().toString());
+		}
 
-		// nested for loop to create the field and plots using Rectangle2D class
+		// create the field containing the plots, represented by 'P' characters
 		for (int r = 0; r < 20; r++) {
 			for (int c = 0; c < 20; c++) {
 				Point plot = new Point(c, r);
@@ -57,7 +59,7 @@ public class Main {
 				else
 					System.out.print(".");
 			}
-			System.out.println("");
+			System.out.print("\n");
 		}
 	}
 

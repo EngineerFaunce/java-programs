@@ -1,16 +1,19 @@
 package wFaunceA1;
 
+// 2 dimensional rectangle
 public class Rectangle extends GeometricObject {
-	private double width; // rectangle width
-	private double height; // rectangle length
+	private double width;
+	private double height;
 
-	public Rectangle() { // POST: default rectangle: blue unfilled, width/length 1.0
+	// POST: default rectangle: blue, unfilled, width/length 1.0
+	public Rectangle() {
 		super();
 		width = 1.0;
 		height = 1.0;
 	}
 
-	public Rectangle(double width, double height) { // POST: rectangle is blue unfilled with set width & length
+	// POST: parameterized width and height for rectangle
+	public Rectangle(double width, double height) {
 		super();
 		this.width = width;
 		this.height = height;
@@ -28,7 +31,7 @@ public class Rectangle extends GeometricObject {
 		return width;
 	}
 
-	public void setWidth(double width) { // PRE: width > 0.0
+	public void setWidth(double width) {
 		this.width = width;
 	}
 
@@ -36,22 +39,25 @@ public class Rectangle extends GeometricObject {
 		return height;
 	}
 
-	public void setHeight(double height) { // PRE: height > 0.0
+	public void setHeight(double height) {
 		this.height = height;
 	}
 
+	// POST: return rectangle area
 	@Override
-	public double getArea() { // POST: return rectangle area
+	public double getArea() {
 		return width * height;
 	}
 
+	// POST: return rectangle perimeter
 	@Override
-	public double getPerimeter() { // POST: return rectangle perimeter
+	public double getPerimeter() {
 		return width * 2 + height * 2;
 	}
 
+	// POST: return string representation of rectangle
 	@Override
-	public String toString() { // POST: return string representation of rectangle
+	public String toString() {
 		return super.toString() + " width: " + width + " height: " + height + " area: "
 				+ String.format("%-6.2f", getArea()) + " perimeter: " + String.format("%-10.2f", getPerimeter());
 	}

@@ -1,16 +1,18 @@
 package wFaunceA1;
 
+// 2 dimensional rectangle with a point
 public class Rectangle2D extends Rectangle {
 	private Point point;
 
-	public Rectangle2D() { // POST: default 2D rectangle: blue unfilled, width/length 1.0
+	// default constructor: blue, unfilled with width & length set to 1.0
+	public Rectangle2D() {
 		super();
 		point = new Point();
 	}
 
-	// PRE: width/height > 0.0, x/y >= 0.0
+	// parameterized constructor
 	public Rectangle2D(double x, double y, double width, double height) {
-		super(width, height); // POST: 2D rectangle is blue unfilled with set width & length
+		super(width, height);
 		this.point = new Point(x, y);
 	}
 
@@ -23,7 +25,8 @@ public class Rectangle2D extends Rectangle {
 		this.point = new Point(x, y);
 	}
 
-	public Boolean contains(Point other) { // POST: return true if object contains other point
+	// POST: return true if object contains other point
+	public Boolean contains(Point other) {
 		double otherX = other.getX();
 		double otherY = other.getY();
 
@@ -37,7 +40,8 @@ public class Rectangle2D extends Rectangle {
 			return false;
 	}
 
-	public Boolean contains(Rectangle2D other) { // POST: return true if object contains other rectangle
+	// POST: return true if object contains other rectangle
+	public Boolean contains(Rectangle2D other) {
 		Point otherP = new Point(other.getPoint().getX() + other.getWidth() - 1,
 				other.getPoint().getY() + other.getHeight() - 1);
 
@@ -47,7 +51,8 @@ public class Rectangle2D extends Rectangle {
 			return false;
 	}
 
-	public Boolean overlaps(Rectangle2D other) { // POST: return true if other overlaps object
+	// POST: return true if another rectangle overlaps with current rectangle
+	public Boolean overlaps(Rectangle2D other) {
 		Point topL = other.getPoint();
 		Point topR = new Point(other.getPoint().getX() + other.getWidth() - 1, other.getPoint().getY());
 		Point bottomR = new Point(other.getPoint().getX() + other.getWidth() - 1,
@@ -56,18 +61,14 @@ public class Rectangle2D extends Rectangle {
 
 		int count = 0;
 
-		if (this.contains(topL)) {
+		if (this.contains(topL))
 			count++;
-		}
-		if (this.contains(topR)) {
+		if (this.contains(topR))
 			count++;
-		}
-		if (this.contains(bottomR)) {
+		if (this.contains(bottomR))
 			count++;
-		}
-		if (this.contains(bottomL)) {
+		if (this.contains(bottomL))
 			count++;
-		}
 
 		if (count > 0 && count < 4) {
 			return true;

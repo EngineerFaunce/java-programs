@@ -1,21 +1,22 @@
 package wFaunceA1;
 
+// point represented in 2D with an X and Y coordinate
 public class Point {
-	private double x; // x coordinate
-	private double y; // y coordinate
+	private double x;
+	private double y;
 
-	public Point() // POST: point (0,0)
-	{
+	// POST: default point is (0,0)
+	public Point() {
 		x = y = 0;
 	}
 
-	public Point(double x, double y) // POST: point (x,y)
-	{
+	// POST: parameterized constructor
+	public Point(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	// accessors and modifiers
+	/* ACCESSORS AND MODIFIERS */
 	public double getX() {
 		return x;
 	}
@@ -32,8 +33,8 @@ public class Point {
 		this.y = y;
 	}
 
-	public String toString() // POST: return (x,y)
-	{
+	// POST: return (x,y)
+	public String toString() {
 		return " (" + x + "," + y + ") ";
 	}
 }

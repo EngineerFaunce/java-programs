@@ -1,21 +1,23 @@
 package wFaunceA1;
 
+// shape with a color and boolean indicating if it is filled
 public abstract class GeometricObject {
-	private String color = "white"; // shape color
-	private boolean filled; // fill status
+	private String color;
+	private boolean filled;
 
-	protected GeometricObject() { // POST: default shape is unfilled blue
+	// POST: default constructor
+	protected GeometricObject() {
 		this.color = "blue";
 		this.filled = false;
 	}
 
-	// POST: shape set by user
+	// POST: parameterized constructor
 	protected GeometricObject(String color, boolean filled) {
 		this.color = color;
 		this.filled = filled;
 	}
 
-	// accessors and modifiers
+	/* ACCESSORS AND MODIFIERS */
 	public String getColor() {
 		return color;
 	}
@@ -28,11 +30,12 @@ public abstract class GeometricObject {
 		return filled;
 	}
 
-	public void setFilled(boolean filled) {
+	public void setFillStatus(boolean filled) {
 		this.filled = filled;
 	}
 
-	public String toString() { // POST: string representation of shape
+	// POST: string representation of shape
+	public String toString() {
 		return "color: " + color + " filled: " + filled;
 	}
 
