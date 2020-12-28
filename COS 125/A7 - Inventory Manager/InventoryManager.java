@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.io.*;
 import java.text.DecimalFormat;
 
-public class A7WilliamFaunce {
+public class InventoryManager {
 
 	public static void main(String[] args) throws IOException {
 		Scanner scan = new Scanner(System.in);					// scanner for user input

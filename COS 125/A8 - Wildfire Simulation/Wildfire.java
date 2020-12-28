@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class A8WilliamFaunce {
+public class Wildfire {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);			// scanner for user input
