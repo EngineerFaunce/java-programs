@@ -1,4 +1,4 @@
-public class Vertex {
+public class Vertex implements Comparable<Vertex> {
     private char node;
 
     // initializes a vertex
@@ -17,5 +17,10 @@ public class Vertex {
     @Override
     public String toString() {
         return "" + this.node;
+    }
+
+    @Override
+    public int compareTo(Vertex vertex) {
+        return Character.compare(this.node, vertex.getNode());
     }
 }

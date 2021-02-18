@@ -57,7 +57,7 @@ public class Main {
 
                 // check if graph contains an edge with these two elements.
                 // If it does not, initialize one and add it to the graph.
-                if (!graph.containsEdge(element1, element2)) {
+                if ((!graph.containsEdge(element1, element2)) && (!graph.containsEdge(element2, element1))) {
                     Edge edge = new Edge(element1, element2);
 
                     // lexicographically sorts the two vertices of the edge before adding it to the graph
@@ -67,7 +67,8 @@ public class Main {
             }
         }
 
-        // sorts the graph's list of edges in lexicographic order
+        // sorts the graph's vertices and edges in lexicographic order
+        graph.sortVertices();
         graph.sortEdges();
 
         return graph;
