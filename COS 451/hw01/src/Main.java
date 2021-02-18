@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -71,10 +69,9 @@ public class Main {
                 }
             }
         }
-        
-        ArrayList<Edge> tempArr = graph.getEdges();
-        Collections.sort(tempArr);
-        graph.setEdges(tempArr);
+
+        // sorts the graph's list of edges in lexicographic order
+        graph.sortEdges();
 
         return graph;
     }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 @SuppressWarnings("BooleanMethodIsAlwaysInverted")
 public class Graph {
@@ -82,18 +83,7 @@ public class Graph {
      * the Edge's character values of its two vertices.
      */
     public void sortEdges() {
-        for (int i=0; i < edges.size()-1; i++) {
-            Edge temp, e1, e2;
-            temp = e1 = this.edges.get(i);
-            e2 = this.edges.get(i+1);
-
-            // compares the combined character values of each "vertex" in an edge pair
-            // and then swaps them so the lesser
-            if ((e1.getNode1() + e1.getNode2()) > (e2.getNode1() + e2.getNode2())) {
-                e1 = e2;
-                e2 = temp;
-            }
-        }
+        Collections.sort(this.edges);
     }
 
     public int vertexDegree(Vertex v) {
