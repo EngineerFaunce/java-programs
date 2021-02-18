@@ -90,8 +90,6 @@ public class Graph {
         // TODO: return degree of given vertex in graph
         return 1;
     }
-
-
 }
 
 

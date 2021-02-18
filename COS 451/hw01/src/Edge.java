@@ -1,7 +1,6 @@
 public class Edge implements Comparable<Edge> {
     private char node1;     // first vertex
     private char node2;     // second vertex
-    private int value;     // combined char value of the two vertices
 
     /**
      * Constructs an Edge instance.
@@ -14,7 +13,6 @@ public class Edge implements Comparable<Edge> {
     public Edge(char n1, char n2) {
         node1 = n1;
         node2 = n2;
-        value = node1 + node2;
     }
 
     public char getNode1() {
@@ -31,14 +29,6 @@ public class Edge implements Comparable<Edge> {
 
     public void setNode2(char node2) {
         this.node2 = node2;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
     }
 
     /**
@@ -60,8 +50,12 @@ public class Edge implements Comparable<Edge> {
 
     @Override
     public int compareTo(Edge edge) {
-        int compareValue = ((Edge) edge).getValue();
+        int result = Character.compare(this.getNode1(), edge.getNode1());
 
-        return this.value - compareValue;
+        // case: the first vertex of each edge is the same
+        if (result == 0) {
+            result = Character.compare(this.getNode2(), edge.getNode2());
+        }
+        return result;
     }
 }
