@@ -13,4 +13,9 @@ public class Vertex {
     public void setNode(char node) {
         this.node = node;
     }
+
+    @Override
+    public String toString() {
+        return "" + this.node;
+    }
 }
