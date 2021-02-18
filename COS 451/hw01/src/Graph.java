@@ -46,7 +46,7 @@ public class Graph {
     }
 
     /**
-     * Checks a graph's ArrayList of type Vertex to check if it contains the given element.
+     * Checks if a graph contains the given element.
      *
      * @param element the element we want to search the graph for
      * @return boolean indicating if the graph contains the given element
@@ -61,9 +61,22 @@ public class Graph {
     }
 
     /**
+     * Checks if a graph contains a Vertex.
+     *
+     * @param v Vertex to search for
+     * @return boolean indicating if the graph contains the given element
+     */
+    public boolean containsVertex(Vertex v) {
+        for (Vertex vertex : this.vertices) {
+            if (vertex == v) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Checks if a graph contains an Edge.
-     * Note: assumes that the two vertices are sorted lexicographically
-     * before performing the search.
      *
      * @param element1 char representation of a Vertex
      * @param element2 char representation of a Vertex
@@ -76,6 +89,28 @@ public class Graph {
             }
         }
         return false;
+    }
+
+    /**
+     * Checks if a graph contains an Edge.
+     *
+     * @param e Edge to search for
+     * @return boolean indicating if the graph contains the Edge
+     */
+    public boolean containsEdge(Edge e) {
+        for (Edge edge : this.edges) {
+            if (edge == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Sorts a graph's vertices in lexicographic order
+     */
+    public void sortVertices() {
+        Collections.sort(this.vertices);
     }
 
     /**
