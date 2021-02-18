@@ -41,6 +41,18 @@ public class Edge implements Comparable<Edge> {
         this.value = value;
     }
 
+    /**
+     * Sorts the two vertices in lexicographic order.
+     */
+    public void sortVertices() {
+        // lexicographically sorts the two elements
+        if (this.node1 > this.node2) {
+            char tempElement = this.node1;
+            this.node1 = this.node2;
+            this.node2 = tempElement;
+        }
+    }
+
     @Override
     public String toString() {
         return "(" + this.node1 + " " + this.node2 + ")";

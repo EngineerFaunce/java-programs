@@ -35,6 +35,7 @@ public class Main {
         Pattern pattern = Pattern.compile("\\w+");
         Matcher matcher = pattern.matcher(output);
 
+        // main loop where we parse the user's input
         while (matcher.find()) {
             String temp = matcher.group();  // assigns match to temporary string
 
@@ -54,17 +55,13 @@ public class Main {
                     graph.addVertex(v);
                 }
 
-                // lexicographically sorts the two elements
-                if (element1 > element2) {
-                    char tempElement = element1;
-                    element1 = element2;
-                    element2 = tempElement;
-                }
-
                 // check if graph contains an edge with these two elements.
                 // If it does not, initialize one and add it to the graph.
                 if (!graph.containsEdge(element1, element2)) {
                     Edge edge = new Edge(element1, element2);
+
+                    // lexicographically sorts the two vertices of the edge before adding it to the graph
+                    edge.sortVertices();
                     graph.addEdge(edge);
                 }
             }
