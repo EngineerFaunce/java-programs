@@ -3,11 +3,11 @@ import java.util.Collections;
 
 @SuppressWarnings("BooleanMethodIsAlwaysInverted")
 public class Graph {
-    private ArrayList<Vertex> vertices;
+    private ArrayList<Character> nodes;
     private ArrayList<Edge> edges;
 
     public Graph() {
-        vertices = new ArrayList<Vertex>();
+        nodes = new ArrayList<Character>();
         edges = new ArrayList<Edge>();
     }
 
@@ -15,12 +15,12 @@ public class Graph {
         return edges;
     }
 
-    public ArrayList<Vertex> getVertices() {
-        return vertices;
+    public ArrayList<Character> getNodes() {
+        return nodes;
     }
 
-    public void setVertices(ArrayList<Vertex> vertices) {
-        this.vertices = vertices;
+    public void setNodes(ArrayList<Character> nodes) {
+        this.nodes = nodes;
     }
 
     public void setEdges(ArrayList<Edge> edges) {
@@ -28,12 +28,21 @@ public class Graph {
     }
 
     /**
-     * Adds a vertex to the graph.
+     * Adds a node to the graph.
      *
-     * @param v Vertex to be added
+     * @param n Node to be added
      */
-    public void addVertex(Vertex v) {
-        this.vertices.add(v);
+    public void addNode(char n) {
+        this.nodes.add(n);
+    }
+
+    /**
+     * Removes a vertex from the graph.
+     *
+     * @param v Vertex to be removed
+     */
+    public void removeNode(char v) {
+        this.nodes.remove(v);
     }
 
     /**
@@ -46,33 +55,12 @@ public class Graph {
     }
 
     /**
-     * Checks if a graph contains the given element.
+     * Removes an edge from the graph.
      *
-     * @param element the element we want to search the graph for
-     * @return boolean indicating if the graph contains the given element
+     * @param e Edge to be removed.
      */
-    public boolean containsVertex(char element) {
-        for (Vertex vertex : this.vertices) {
-            if (vertex.getNode() == element) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks if a graph contains a Vertex.
-     *
-     * @param v Vertex to search for
-     * @return boolean indicating if the graph contains the given element
-     */
-    public boolean containsVertex(Vertex v) {
-        for (Vertex vertex : this.vertices) {
-            if (vertex == v) {
-                return true;
-            }
-        }
-        return false;
+    public void removeEdge(Edge e) {
+        this.edges.remove(e);
     }
 
     /**
@@ -99,7 +87,7 @@ public class Graph {
      */
     public boolean containsEdge(Edge e) {
         for (Edge edge : this.edges) {
-            if (edge == e) {
+            if ((edge.getNode1() == e.getNode1()) && (edge.getNode2() == e.getNode2())) {
                 return true;
             }
         }
@@ -107,24 +95,61 @@ public class Graph {
     }
 
     /**
-     * Sorts a graph's vertices in lexicographic order
+     * Sorts a graph's nodes in lexicographic order
      */
-    public void sortVertices() {
-        Collections.sort(this.vertices);
+    public void sortNodes() {
+        Collections.sort(this.nodes);
     }
 
     /**
      * Sorts a graph's edges in lexicographic order by comparing
-     * the Edge's character values of its two vertices.
+     * the Edge's character values of its two nodes.
      */
     public void sortEdges() {
         Collections.sort(this.edges);
     }
 
-    public int vertexDegree(Vertex v) {
-        // TODO: return degree of given vertex in graph
-        return 1;
+    /**
+     * Find all the edges containing a given Vertex.
+     *
+     * @param v Vertex to search edge pairs for
+     * @return ArrayList<Edge> containing each Edge containing the given Vertex
+     */
+    public ArrayList<Edge> findEdges(char v) {
+        ArrayList<Edge> result = new ArrayList<Edge>();
+        for (Edge edge : this.edges) {
+            if (edge.containsNode(v)) {
+                result.add(edge);
+            }
+        }
+        return result;
     }
+
+    /**
+     * Returns the degree of a node in a graph.
+     *
+     * @param n Node to find the degree of
+     * @return an integer representing a node's degree, or -1 if the graph does not contain the given node
+     */
+    public int getDegree(char n) {
+        int count = 0;
+
+        // ensure graph contains this vertex
+        if (this.nodes.contains(n)) {
+            if (!this.findEdges(n).isEmpty()) {
+                for (Edge edge : this.findEdges(n)) {
+                    count += 1;
+                }
+            }
+            return count;
+        }
+        return -1;
+    }
+
+//    @Override
+//    public String toString() {
+//        // TODO (optional): change how the graph outputs its nodes and edges in the console
+//    }
 }
 
 

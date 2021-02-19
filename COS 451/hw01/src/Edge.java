@@ -1,14 +1,12 @@
 public class Edge implements Comparable<Edge> {
-    private char node1;     // first vertex
-    private char node2;     // second vertex
+    private char node1;     // first node
+    private char node2;     // second node
 
     /**
      * Constructs an Edge instance.
-     * Note: assumes that the two vertices are sorted lexicographically
-     * at the time of creation.
      *
-     * @param n1 char representation of first vertex
-     * @param n2 char representation of second vertex
+     * @param n1 first vertex
+     * @param n2 second vertex
      */
     public Edge(char n1, char n2) {
         node1 = n1;
@@ -32,14 +30,24 @@ public class Edge implements Comparable<Edge> {
     }
 
     /**
-     * Sorts the two vertices in lexicographic order.
+     * Checks if an Edge contains a certain node.
+     *
+     * @param n Node to search for
+     * @return boolean indicating whether the Edge contains a given node
      */
-    public void sortVertices() {
+    public boolean containsNode(char n) {
+        return (this.node1 == n) || (this.node2 == n);
+    }
+
+    /**
+     * Sorts the two nodes in lexicographic order.
+     */
+    public void sortNodes() {
         // lexicographically sorts the two elements
         if (this.node1 > this.node2) {
-            char tempElement = this.node1;
+            char tempNode = this.node1;
             this.node1 = this.node2;
-            this.node2 = tempElement;
+            this.node2 = tempNode;
         }
     }
 
