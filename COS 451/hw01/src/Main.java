@@ -92,6 +92,8 @@ public class Main {
         ArrayList<Character> pileB = new ArrayList<>();
         double nodeRemaining = graph.getNodes().size();
 
+        ArrayList<Edge> edgeCopy = new ArrayList<Edge>(graph.getEdges());
+
         while (graph.getNodes().size() > 0) {
             char node = graph.getNodes().get(0);
             int nodeDegree = graph.getDegree(node);
@@ -99,7 +101,7 @@ public class Main {
             // edges containing the currently processed node.
             ArrayList<Edge> nodeEdges = graph.findEdges(node);
 
-            nodeRemaining = (double)graph.getNodes().size() - 1;
+            nodeRemaining = (double) graph.getNodes().size() - 1;
             if (nodeDegree > (nodeRemaining / 2)) {
                 pileA.add(node);
 
@@ -149,14 +151,25 @@ public class Main {
             graph.setEdges(tempEdges);
         }
 
+        // process pileA for correct formatting
+        ArrayList<Edge> cliqueEdges = new ArrayList<Edge>();
+        if (!pileA.isEmpty()) {
+            for (Edge edge : edgeCopy) {
+                if (pileA.contains(edge.getNode1()) &&  pileA.contains(edge.getNode2())) {
+                    cliqueEdges.add(edge);
+                }
+            }
+        }
+
+        // Output
         System.out.print("Cliques of graph: (");
-        for (char node : pileA) {
-            System.out.print(node + " ");
+        for (Edge edge : cliqueEdges) {
+            System.out.printf("(%s %s)", edge.getNode1(), edge.getNode2());
         }
 
         System.out.print(")\nIndependent set of graph: (");
         for (char node : pileB) {
-            System.out.print(node + " ");
+            System.out.printf("(%s)", node);
         }
         System.out.print(")");
     }
