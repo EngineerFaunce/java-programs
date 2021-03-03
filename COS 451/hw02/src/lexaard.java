@@ -202,6 +202,13 @@ public class lexaard {
             current_state = table.get(row).get(column+1);
             count++;
             System.out.print("");
+
+            // update which row in the state-transition table we'll read on next loop
+            for (int j=0; j < table.size(); j++) {
+                if (table.get(j).get(0).contains(current_state)) {
+                    row = j;
+                }
+            }
         }
 
         if (current_state.equals(accept_state)) {
