@@ -27,7 +27,11 @@ default: all
 all:
     # Compile source files
 	@javac -cp $(CLASSPATH) $(sourcelist)
+	# lexaard executable made
+	@echo "java -cp" $(CLASSPATH) lexaard > lexaard
+	@chmod +x lexaard
 
 clean:
+	rm lexaard
     # Remove all the class files in the classpath
 	@-find $(rootdir) \( -name "*~" -o -name "*.class" -o -name "runTests" \) -exec rm '{}' \;
